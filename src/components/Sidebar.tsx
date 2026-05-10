@@ -10,6 +10,7 @@ export default function Sidebar() {
   const [profileImage, setProfileImage] = useState<string | null>(null);
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setMounted(true);
@@ -20,23 +21,31 @@ export default function Sidebar() {
 
     const getUser = async () => {
       try {
+        setIsLoading(true);
         const supabase = createClient();
-        const { data: { user } } = await supabase.auth.getUser();
+        
+        // Wait a bit for session to be established after redirect
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
+        const { data: { user }, error } = await supabase.auth.getUser();
+        
+        if (error) {
+          console.error('Error fetching user:', error);
+          setIsLoading(false);
+          return;
+        }
         
         if (user) {
           setUserEmail(user.email || null);
-          // Get profile picture from user metadata
           const photoUrl = user.user_metadata?.picture;
           if (photoUrl) {
-            // Test image URL before setting
-            const img = new Image();
-            img.onload = () => setProfileImage(photoUrl);
-            img.onerror = () => setProfileImage(null);
-            img.src = photoUrl;
+            setProfileImage(photoUrl);
           }
         }
+        setIsLoading(false);
       } catch (error) {
-        console.error('Error fetching user:', error);
+        console.error('Error in getUser:', error);
+        setIsLoading(false);
       }
     };
 
@@ -92,15 +101,18 @@ export default function Sidebar() {
 
         {/* Account Display */}
         <div className="flex items-center gap-3 group cursor-pointer">
-          {profileImage ? (
+          {isLoading ? (
+            <div className="w-6 h-6 rounded-full bg-zinc-700 dark:bg-zinc-300 animate-pulse" />
+          ) : profileImage ? (
             <img 
               src={profileImage} 
               alt="Profile" 
-              className="w-6 h-6 rounded-full object-cover"
+              className="w-6 h-6 rounded-full object-cover shrink-0"
               crossOrigin="anonymous"
+              onError={() => setProfileImage(null)}
             />
           ) : (
-            <div className="w-6 h-6 rounded-full bg-zinc-700 dark:bg-zinc-300 flex items-center justify-center text-xs font-medium">
+            <div className="w-6 h-6 rounded-full bg-zinc-700 dark:bg-zinc-300 flex items-center justify-center text-xs font-medium shrink-0">
               {userEmail?.[0]?.toUpperCase() || 'U'}
             </div>
           )}
