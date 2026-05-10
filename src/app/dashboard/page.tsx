@@ -34,13 +34,13 @@ export default function DashboardPage() {
 	}
 
 	return (
-		<div className="h-full w-full flex flex-col items-center justify-center bg-white dark:bg-black p-8 min-h-screen transition-colors duration-300">
+        <div className="h-full w-full flex flex-col items-center justify-center bg-white dark:bg-black pb-8 px-8 min-h-screen transition-colors duration-500">
 			{/* Visual Header for the Menu */}
-			<div className="mb-16 text-center space-y-2">
-				<h2 className="text-zinc-500 dark:text-zinc-400 text-[10px] uppercase tracking-[0.5em] transition-colors duration-300">
+			<div className="mb-8 text-center space-y-2">
+				<h2 className="text-zinc-500 dark:text-zinc-400 text-[10px] uppercase tracking-[0.5em] transition-colors duration-500">
 					Portal
 				</h2>
-				<div className="h-px w-12 bg-zinc-300 dark:bg-zinc-700 mx-auto transition-colors duration-300" />
+                <div className="h-px w-12 bg-zinc-300 dark:bg-zinc-700 mx-auto transition-colors duration-500" />
 			</div>
 
 			{/* The Two Main Module Buttons */}
@@ -48,13 +48,13 @@ export default function DashboardPage() {
 				<ActionCard
 					number="01"
 					title="Exams"
-					description="Access timed business administration core and specialty exams."
+					description="Access official timed exams from various competitive events."
 					href="/dashboard/exams"
 				/>
 				<ActionCard
 					number="02"
 					title="Roleplays"
-					description="Interactive AI simulations for Series events and Team Decision Making."
+					description="Interactive simulations for Individual Series events and Team Decision Making, with and without a trainer."
 					href="/dashboard/roleplays"
 				/>
 			</div>

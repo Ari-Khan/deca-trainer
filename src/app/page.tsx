@@ -57,15 +57,12 @@ export default function LandingPage() {
 					<p className="text-zinc-500">Loading...</p>
 				</div>
 			) : (
-				<div className="min-h-screen bg-white text-black dark:bg-black dark:text-white font-sans antialiased selection:bg-black dark:selection:bg-white selection:text-white dark:selection:text-black flex flex-col transition-colors duration-300">
-					<header className="border-b border-zinc-100/50 dark:border-zinc-900/50 py-4 px-6 transition-colors duration-300">
+				<div className="min-h-screen bg-white text-black dark:bg-black dark:text-white font-sans antialiased selection:bg-black dark:selection:bg-white selection:text-white dark:selection:text-black flex flex-col transition-colors duration-500">
+					<header className="border-b border-zinc-100/50 dark:border-zinc-900/50 py-4 px-6 transition-colors duration-500">
 						<div className="max-w-7xl mx-auto flex items-center justify-between">
-							<span className="text-sm font-medium tracking-tight uppercase text-zinc-400 dark:text-zinc-600">
-								DECA Trainer{" "}
-								<span className="text-black dark:text-white">
-									/ V1
-								</span>
-							</span>
+							<div className="font-bold tracking-tighter text-lg">
+								DECA<span className="font-light opacity-50">TRAINER</span> V1
+							</div>
 						</div>
 					</header>
 
@@ -76,7 +73,7 @@ export default function LandingPage() {
 									A smarter way to{" "}
 									<span className="font-medium">train.</span>
 								</h1>
-								<p className="text-zinc-500 dark:text-zinc-400 text-lg font-light max-w-md mx-auto transition-colors duration-300">
+								<p className="text-zinc-500 dark:text-zinc-400 text-lg font-light max-w-md mx-auto transition-colors duration-500">
 									An exam and roleplay companion for RHHS
 									DECA. Record, review, and refine your
 									competitive performance.
@@ -92,7 +89,7 @@ export default function LandingPage() {
 								<button
 									onClick={handleGoogleSignIn}
 									disabled={isSigningIn}
-									className="px-10 py-3.5 bg-black dark:bg-white text-white dark:text-black text-sm font-medium rounded-full tracking-tight hover:bg-zinc-700 dark:hover:bg-zinc-100 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-sm flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100"
+									className="px-10 py-3.5 bg-black dark:bg-white text-white dark:text-black text-sm font-medium rounded-full tracking-tight hover:bg-zinc-700 dark:hover:bg-zinc-100 transition-all duration-500 transform hover:scale-[1.02] active:scale-[0.98] shadow-sm flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100"
 								>
 									{isSigningIn ? (
 										<svg
@@ -145,9 +142,9 @@ export default function LandingPage() {
 						</div>
 					</main>
 
-					<footer className="py-6 px-6 border-t border-zinc-50 dark:border-zinc-950 transition-colors duration-300">
+					<footer className="py-6 px-6 border-t border-zinc-50 dark:border-zinc-950 transition-colors duration-500">
 						<div className="max-w-7xl mx-auto text-center">
-							<p className="text-[10px] text-zinc-300 dark:text-zinc-700 uppercase tracking-[0.3em] transition-colors duration-300">
+							<p className="text-[10px] text-zinc-300 dark:text-zinc-700 uppercase tracking-[0.3em] transition-colors duration-500">
 								Developed by Ari Khan
 							</p>
 						</div>
