@@ -14,13 +14,10 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
 	const [theme, setTheme] = useState<Theme>("light");
 
-	// On mount, read saved preference or system preference
+	// On mount, read saved preference or default to light mode
 	useEffect(() => {
 		const saved = localStorage.getItem("theme") as Theme | null;
-		const prefersDark = window.matchMedia(
-			"(prefers-color-scheme: dark)"
-		).matches;
-		const resolved = saved ?? (prefersDark ? "dark" : "light");
+		const resolved = saved ?? "light";
 		setTheme(resolved);
 		document.documentElement.classList.toggle("dark", resolved === "dark");
 	}, []);
