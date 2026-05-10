@@ -1,31 +1,39 @@
-import { NextRequest, NextResponse } from "next/server";
+import { createServerClient } from '@supabase/ssr';
+import { cookies } from 'next/headers';
+import { NextResponse, type NextRequest } from 'next/server';
 
 export async function GET(request: NextRequest) {
-  const url = new URL(request.url);
-  const code = url.searchParams.get("code");
-  const error = url.searchParams.get("error");
-  const error_description = url.searchParams.get("error_description");
+  const { searchParams, origin } = new URL(request.url);
+  const code = searchParams.get('code');
+  const next = searchParams.get('next') ?? '/dashboard';
 
-  // Handle OAuth errors
-  if (error) {
-    const message = error_description || error;
-    console.error('OAuth error:', message);
-    return NextResponse.redirect(
-      new URL(`/?error=${encodeURIComponent(message)}`, request.url)
+  if (code) {
+    const cookieStore = await cookies();
+
+    const supabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_KEY!,
+      {
+        cookies: {
+          getAll() {
+            return cookieStore.getAll();
+          },
+          setAll(cookiesToSet) {
+            cookiesToSet.forEach(({ name, value, options }) => {
+              cookieStore.set(name, value, options);
+            });
+          },
+        },
+      }
     );
+
+    const { error } = await supabase.auth.exchangeCodeForSession(code);
+
+    if (!error) {
+      return NextResponse.redirect(`${origin}${next}`);
+    }
   }
 
-  // For implicit flow, session is in URL fragment
-  // For auth code flow, code is in query params
-  // Either way, we redirect to dashboard and let client-side handle it
-  console.log('Auth callback received - redirecting to dashboard');
-  
-  const dashboardUrl = new URL("/dashboard", request.url);
-  // Preserve any hash/fragment from the original URL
-  if (url.hash) {
-    dashboardUrl.hash = url.hash;
-  }
-  
-  const response = NextResponse.redirect(dashboardUrl);
-  return response;
-}}
+  // Auth failed — redirect to landing with error flag
+  return NextResponse.redirect(`${origin}/?error=auth_failed`);
+}

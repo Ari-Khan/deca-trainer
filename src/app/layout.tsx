@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/lib/ThemeContext";
+import { SupabaseProvider } from "@/lib/SupabaseContext";
 
 const inter = Inter({ subsets: ["latin"], weight: ['200', '400', '500', '700'] });
 
@@ -18,9 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        <SupabaseProvider>
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
+        </SupabaseProvider>
       </body>
     </html>
   );
