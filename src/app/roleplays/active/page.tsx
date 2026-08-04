@@ -84,7 +84,7 @@ export default function ActiveRoleplayPage() {
 
 	return (
 		<div className="min-h-screen bg-white dark:bg-black text-black dark:text-white flex flex-col h-screen overflow-hidden transition-colors duration-500">
-			<div className="h-16 shrink-0 border-b border-zinc-200 dark:border-zinc-800 flex items-center px-8 transition-colors duration-500">
+			<div className="relative h-16 shrink-0 border-b border-zinc-200 dark:border-zinc-800 flex items-center px-8 transition-colors duration-500">
 				<Link
 					href="/dashboard/roleplays"
 					className="flex items-center gap-1 text-sm text-zinc-500 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-500 shrink-0"
@@ -93,7 +93,7 @@ export default function ActiveRoleplayPage() {
 					Back
 				</Link>
 				<span
-					className={`text-2xl font-bold tabular-nums mx-auto ${
+					className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl font-bold tabular-nums ${
 						remaining === 0
 							? "text-red-500"
 							: status !== "running"
@@ -105,7 +105,7 @@ export default function ActiveRoleplayPage() {
 				</span>
 				<button
 					onClick={handleToggle}
-					className="min-w-[100px] px-8 py-2 rounded-full bg-black text-white dark:bg-white dark:text-black text-sm font-bold transition-colors duration-300 shrink-0"
+					className="ml-auto w-[120px] py-2 rounded-full bg-black text-white dark:bg-white dark:text-black text-sm font-bold transition-colors duration-300 shrink-0"
 				>
 					{buttonLabel}
 				</button>
