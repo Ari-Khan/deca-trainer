@@ -10,24 +10,24 @@
 		"format": "prettier --write ."
 	},
 	"dependencies": {
-		"@supabase/ssr": "^0.10.3",
+		"@supabase/ssr": "^0.12.7",
 		"@supabase/supabase-js": "^2.105.4",
 		"lucide-react": "^1.14.0",
-		"next": "16.2.6",
+		"next": "^16.3.6",
 		"pdfjs-dist": "^6.3.289",
 		"react": "^19.2.6",
 		"react-dom": "^19.2.6"
 	},
 	"devDependencies": {
 		"@tailwindcss/postcss": "^4",
-		"@types/node": "^25.6.2",
+		"@types/node": "^26.6.2",
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
 		"eslint": "^10.3.0",
-		"eslint-config-next": "16.2.6",
+		"eslint-config-next": "^16.3.6",
 		"prettier": "^3.0.0",
 		"tailwindcss": "^4",
-		"typescript": "^6.0.3"
+		"typescript": "^7.0.2"
 	},
 	"allowScripts": {
 		"sharp@0.34.5": true,
