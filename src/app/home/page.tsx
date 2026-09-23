@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useSupabase } from "@/lib/SupabaseContext";
+import { useSupabase } from "@/context/SupabaseContext";
 import { useState, useEffect } from "react";
 
 export default function HomePage() {

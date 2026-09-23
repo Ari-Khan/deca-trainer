@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import Sidebar from "@/components/Sidebar";
-import { ThemeProvider } from "@/lib/ThemeContext";
-import { SupabaseProvider } from "@/lib/SupabaseContext";
+import { ThemeProvider } from "@/context/ThemeContext";
+import { SupabaseProvider } from "@/context/SupabaseContext";
 
 export default function DashboardLayout({
 	children,

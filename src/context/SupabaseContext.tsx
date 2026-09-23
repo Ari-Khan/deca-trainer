@@ -7,7 +7,6 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 const SupabaseContext = createContext<SupabaseClient | null>(null);
 
 export function SupabaseProvider({ children }: { children: React.ReactNode }) {
-	// useState with initializer ensures exactly one client is created per browser tab
 	const [supabase] = useState(() =>
 		createBrowserClient(
 			process.env.NEXT_PUBLIC_SUPABASE_URL!,

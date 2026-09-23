@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { ThemeProvider } from "@/lib/ThemeContext";
-import { SupabaseProvider } from "@/lib/SupabaseContext";
+import { ThemeProvider } from "@/context/ThemeContext";
+import { SupabaseProvider } from "@/context/SupabaseContext";
 
 export const metadata: Metadata = {
 	title: "DECA Roleplay Trainer",

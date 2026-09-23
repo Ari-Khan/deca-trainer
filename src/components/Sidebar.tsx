@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
-import { useTheme } from "@/lib/ThemeContext";
-import { useSupabase } from "@/lib/SupabaseContext";
+import { useTheme } from "@/context/ThemeContext";
+import { useSupabase } from "@/context/SupabaseContext";
 
 export default function Sidebar() {
 	const { theme, toggleTheme } = useTheme();
@@ -108,6 +108,13 @@ export default function Sidebar() {
 						Account
 					</span>
 				</div>
+
+				<a
+					href="/about"
+					className="block text-sm text-zinc-500 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-500"
+				>
+					About
+				</a>
 			</div>
 		</aside>
 	);

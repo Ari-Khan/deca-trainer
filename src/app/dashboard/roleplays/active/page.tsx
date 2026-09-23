@@ -105,7 +105,7 @@ export default function ActiveRoleplayPage() {
 				</span>
 				<button
 					onClick={handleToggle}
-					className="ml-auto w-[120px] py-2 rounded-full bg-black text-white dark:bg-white dark:text-black text-sm font-bold transition-colors duration-300 shrink-0"
+					className="ml-auto w-30 py-2 rounded-full bg-black text-white dark:bg-white dark:text-black text-sm font-bold transition-colors duration-300 shrink-0"
 				>
 					{buttonLabel}
 				</button>

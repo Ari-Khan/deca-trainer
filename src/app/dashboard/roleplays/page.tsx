@@ -22,7 +22,7 @@ export default function RoleplaysPage() {
 				"roleplay-pdf",
 				JSON.stringify({ url, mode, name: file.name })
 			);
-			router.push("/roleplays/active");
+			router.push("/dashboard/roleplays/active");
 		};
 
 	return (
